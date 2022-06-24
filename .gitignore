@@ -1,0 +1,9 @@
+.vscode*
+*.ipynb_*
+__pycache__*
+venv*
+videos/*
+video_labels/*
+test_vids/*
+video_data/*
+models/*
