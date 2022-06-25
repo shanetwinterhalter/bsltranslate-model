@@ -16,5 +16,5 @@ def normalize_data(data):
 
 def tokenize(label, vocab):
     for k, v in vocab.items():
-        if v[0] == label:
+        if v == label:
             return k

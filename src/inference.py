@@ -21,7 +21,7 @@ def load_video(file):
         return VideoCapture(file)
 
 
-def process_frame(hands, frame, mean, std, no_coords, debug=False):
+def process_frame(hands, frame, mean, std, no_coords=126, debug=False):
     '''Gets hand coordinates for single video frame'''
     frame = cvtColor(frame, COLOR_BGR2RGB)
     mp_result = hands.process(frame)
@@ -67,10 +67,10 @@ def predict_signs(video, model, vocab, normalization_stats,
                     cur_sign = cur_sign.float()
                 pred_token = get_prediction(cur_sign, frames_per_sign, model)
                 pred = detokenise(vocab, pred_token)
-                predictions.append([video.get(CAP_PROP_POS_MSEC), pred[0]])
+                predictions.append([video.get(CAP_PROP_POS_MSEC), pred])
                 if display_pred:
-                    if pred[0] != 'NaS':
-                        putText(frame, pred[0], bottomLeftCornerOfText, font,
+                    if pred != 'NaS':
+                        putText(frame, pred, bottomLeftCornerOfText, font,
                                 fontScale, fontColor, thickness, lineType)
                     imshow("Frame", frame)
             else:

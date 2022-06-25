@@ -5,3 +5,5 @@ mediapipe
 pandas
 torch
 torchvision
+ipykernel
+protobuf==3.20.*

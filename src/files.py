@@ -18,6 +18,16 @@ def read_from_file(filename, delim=' ', delete_headers=False):
     return data
 
 
+def read_vocab_file(filename):
+    ''' Read vocabulary file'''
+    data = {}
+    with open(filename, newline='') as f:
+        csv_data = reader(f)
+        for idx, row in enumerate(csv_data):
+            data[idx] = row[-1]
+    return data
+
+
 def check_file_exists(filename):
     '''Check whether a file exists'''
     if not isfile(filename):
